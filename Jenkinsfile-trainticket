@@ -2,11 +2,30 @@ pipeline{
   agent any
     stages{
     
-      stage('Git Checkout'){
+      stage("Git Checkout"){
         steps{
               git credentialsId: 'GitID', url: 'https://github.com/shreemansandeep/Train-Ticket-Reservation-System.git'
         }
       }
+      
+      stage("Unit testing"){
+       steps{
+              sh 'mvn test'
+             }
+        }
+        
+      stage("Integration testing"){
+                steps{
+                      sh 'mvn verify -DskipUnitTests'
+                }
+        }
+
+      stage("Maven Build"){
+      steps{
+          sh "mvn clean install"
+  
+    }
+}
       
     }
 }
