@@ -37,6 +37,14 @@ stage("Static code analysis"){
     }
 }
 
+stage("Quality Gate Status"){
+    steps{
+    script{
+          waitForQualityGate abortPipeline: false, credentialsId: 'sonartoken'
+          }
+        }
+    }
+
 
       
     }
