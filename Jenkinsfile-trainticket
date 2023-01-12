@@ -44,6 +44,28 @@ stage("Quality Gate Status"){
           }
         }
     }
+    
+    stage("Upload War To Nexus"){
+      steps{
+        script{
+        nexusArtifactUploader artifacts: [
+        [
+        artifactId: 'TrainBook', 
+        classifier: '', 
+        file: 'target/trainticketsystem.war', 
+        type: 'war'
+        ]
+        ], 
+        credentialsId: 'nexus-auth', 
+        groupId: 'TrainBook', 
+        nexusUrl: '3.109.184.120:8081', 
+        nexusVersion: 'nexus3', 
+        protocol: 'http', 
+        repository: 'train-release', 
+        version: '1.0'
+        }
+      }
+    }
 
 
       
