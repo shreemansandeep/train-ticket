@@ -48,6 +48,11 @@ stage("Quality Gate Status"){
     stage("Upload War To Nexus"){
       steps{
         script{
+        
+        def pom = readMavenPom file: 'pom.xml'
+                
+        def nexusRepo = pom.version.endsWith("SNAPSHOT") ? "train-snapshot" : "train-release"
+        
         nexusArtifactUploader artifacts: [
         [
         artifactId: 'TrainBook', 
@@ -61,8 +66,8 @@ stage("Quality Gate Status"){
         nexusUrl: '3.109.184.120:8081', 
         nexusVersion: 'nexus3', 
         protocol: 'http', 
-        repository: 'train-release', 
-        version: '1.0'
+        repository: nexusRepo, 
+        version: "${pom.version}"
         }
       }
     }
