@@ -15,14 +15,20 @@ pipeline{
     }
 }
 
+stage('post-build') {
+      
+      SendEmailNotification("SUCCESSFUL")
     }
-      post {
-            always{
-                
-                emailext to: "shreemansandeep@gmail.com",
-                subject: "jenkins build:${currentBuild.currentResult}: ${env.JOB_NAME}",
-                body: "${currentBuild.currentResult}: Job ${env.JOB_NAME}\nMore Info can be found here: ${env.BUILD_URL}",
-                
-            }
-        }
+  } catch(e) {
+    // mark build as failed
+    currentBuild.result = "FAILURE";
+   
+    SendEmailNotification(currentBuild.result)
+
+    // mark current build as a failure and throw the error
+    throw e;
+  }
+
+    }
+      
    }
