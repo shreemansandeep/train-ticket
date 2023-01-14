@@ -17,7 +17,6 @@ pipeline{
 
   stage("Email Notification") {
   steps {
-    script {
       post{
         always{
             mail to: "shreemansandeep@gmail.com",
@@ -25,7 +24,7 @@ pipeline{
             body: "Test"
         }
     }
-    }
+   
   }
 }
       
