@@ -21,7 +21,6 @@ pipeline{
             mail to: "shreemansandeep@gmail.com",
             subject: "Test Email",
             body: "Test"
-            attachLog: true
         }
     }
    }
