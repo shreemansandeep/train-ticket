@@ -20,8 +20,9 @@ pipeline{
     post{
         always{
             mail to: "shreemansandeep@gmail.com",
-            subject: "Jenkins Result Email",
-            body: "${currentBuildId.currentResult}: Job ${env.JOB_NAME}\nMore Info can be found here: ${env.BUILD_URL}"
+            subject: "$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!",
+            body: "$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS:
+            Check console output at $BUILD_URL to view the results.
         }
     }
       
