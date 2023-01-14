@@ -19,7 +19,7 @@ stage('post-build') {
       
       SendEmailNotification("SUCCESSFUL")
     }
-  } catch(e) {
+   catch(e) {
     // mark build as failed
     currentBuild.result = "FAILURE";
    
