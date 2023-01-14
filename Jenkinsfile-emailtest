@@ -20,8 +20,8 @@ pipeline{
     post{
         always{
             mail to: "shreemansandeep@gmail.com",
-            subject: "${JOB_NAME - Build} # ${BUILD_NUMBER} - ${currentResult}!",
-            body: "${JOB_NAME - Build} # ${BUILD_NUMBER} - ${currentResult}:\nMore Info can be found here: ${env.BUILD_URL}"
+            subject: "${JOB_NAME - Build} # ${BUILD_NUMBER}",
+            body: "${JOB_NAME - Build} # ${BUILD_NUMBER}:\nMore Info can be found here: ${env.BUILD_URL}"
         }
     }
       
