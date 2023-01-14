@@ -15,9 +15,7 @@ pipeline{
     }
 }
 
-    }
-    
-    stage('Error') {
+stage('Error') {
             when {
                 expression { doError == '1' }
             }
@@ -43,5 +41,9 @@ pipeline{
             body: "${JOB_NAME - Build} # ${BUILD_NUMBER} ${env.JOB_RESULT}:\nMore Info can be found here: ${env.BUILD_URL}"
         }
     }
+
+    }
+    
+    
       
    }
