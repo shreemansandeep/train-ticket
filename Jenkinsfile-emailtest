@@ -21,7 +21,7 @@ pipeline{
         always{
             mail to: "shreemansandeep@gmail.com",
             subject: "Jenkins Result Email",
-            body: "${currentBuild.currentResult}: Job ${env.JOB_NAME}\nMore Info can be found here: ${env.BUILD_URL}"
+            body: "${currentBuildId.currentResult}: Job ${env.JOB_NAME}\nMore Info can be found here: ${env.BUILD_URL}"
         }
     }
       
