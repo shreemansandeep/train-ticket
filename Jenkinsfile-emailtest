@@ -14,10 +14,8 @@ pipeline{
   
     }
 }
-      
-      }
-      
-      stage("Email Notification") {
+
+  stage("Email Notification") {
   steps {
     script {
       emailext (
@@ -29,5 +27,9 @@ pipeline{
     }
   }
 }
+      
+      }
+      
+    
 
      }
