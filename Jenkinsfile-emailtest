@@ -19,7 +19,7 @@ pipeline{
   steps {
     script {
       emailext (
-        to: "sandeepkumarg864@gmail.com",
+        to: "shreemansandeep@gmail.com",
         subject: "Jenkins Pipeline Notification: ${currentBuild.currentResult}",
         body: "The pipeline has completed with a status of ${currentBuild.currentResult}.\n\nPlease check the pipeline for more details.",
         recipientProviders: [[$class: 'DevelopersRecipientProvider']]
@@ -28,8 +28,5 @@ pipeline{
   }
 }
       
-      }
-      
-    
-
+      }e
      }
