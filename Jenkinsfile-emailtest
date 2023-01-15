@@ -31,6 +31,7 @@ pipeline{
       mail to: "shreemansandeep@gmail.com", 
       subject:"SUCCESS: ${currentBuild.fullDisplayName}", 
       body: "Yay, we passed."
+      attachLog: true
     }
     failure {
       mail to: "shreemansandeep@gmail.com", 
