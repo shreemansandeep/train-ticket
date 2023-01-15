@@ -18,13 +18,13 @@ pipeline{
     
     
     post{
-    
-       /* always{
+    /*
+        always{
             mail to: "shreemansandeep@gmail.com",
             subject: "${JOB_NAME - Build} # ${BUILD_NUMBER} ${env.JOB_RESULT}",
             body: "${JOB_NAME - Build} # ${BUILD_NUMBER} ${env.JOB_RESULT}:\nMore Info can be found here: ${env.BUILD_URL}"
-        } */
-       
+        } 
+       */
     }
      
     
