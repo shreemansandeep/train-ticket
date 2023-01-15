@@ -16,31 +16,20 @@ pipeline{
 }
     }
     
-    /*
+    
     post {
     success {
       mail to: "shreemansandeep@gmail.com", 
-      subject:"SUCCESS: ${currentBuild.fullDisplayName}", 
+      subject:"BUILD SUCCESS: ${currentBuild.fullDisplayName}", 
       body: "More Info can be found here: ${env.BUILD_URL}."
     }
     failure {
       mail to: "shreemansandeep@gmail.com", 
-      subject:"FAILURE: ${currentBuild.fullDisplayName}", 
+      subject:"BUILD FAILURE: ${currentBuild.fullDisplayName}", 
       body: "More Info can be found here: ${env.BUILD_URL}."
     }
   }
-     */
-     
-     post {
-    success {
-      emailext attachLog: true, body: "${currentBuild.result}: ${BUILD_URL}", compressLog: true, replyTo: 'shreemansandeep@gmail.com',
-       subject: "Build Notification: ${JOB_NAME}-Build# ${BUILD_NUMBER} ${currentBuild.result}", to: 'shreemansandeep@gmail.com'
-    }
-    failure {
-      emailext attachLog: true, body: "${currentBuild.result}: ${BUILD_URL}", compressLog: true, replyTo: 'shreemansandeep@gmail.com',
-       subject: "Build Notification: ${JOB_NAME}-Build# ${BUILD_NUMBER} ${currentBuild.result}", to: 'shreemansandeep@gmail.com'
-    }
-  }
+    
     
     }
       
