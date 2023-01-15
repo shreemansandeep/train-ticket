@@ -31,13 +31,13 @@ pipeline{
       mail to: "shreemansandeep@gmail.com", 
       subject:"SUCCESS: ${currentBuild.fullDisplayName}", 
       body: "More Info can be found here: ${env.BUILD_URL}."
-      emailext attachLog: true
+      emailext attachLog: "true"
     }
     failure {
       mail to: "shreemansandeep@gmail.com", 
       subject:"FAILURE: ${currentBuild.fullDisplayName}", 
       body: "More Info can be found here: ${env.BUILD_URL}."
-      emailext attachLog: true
+      emailext attachLog: "true"
     }
   }
     
