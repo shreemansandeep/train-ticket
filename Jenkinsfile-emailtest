@@ -18,15 +18,26 @@ pipeline{
     
     /*
     post{
-    
         always{
             mail to: "shreemansandeep@gmail.com",
             subject: "${JOB_NAME - Build} # ${BUILD_NUMBER} ${env.JOB_RESULT}",
             body: "${JOB_NAME - Build} # ${BUILD_NUMBER} ${env.JOB_RESULT}:\nMore Info can be found here: ${env.BUILD_URL}"
         } 
-       
     }
      */
+     
+     post {
+    success {
+      mail to: "shreemansandeep@gmail.com", 
+      subject:"SUCCESS: ${currentBuild.fullDisplayName}", 
+      body: "Yay, we passed."
+    }
+    failure {
+      mail to: "shreemansandeep@gmail.com", 
+      subject:"FAILURE: ${currentBuild.fullDisplayName}", 
+      body: "Boo, we failed."
+    }
+  }
     
     }
       
