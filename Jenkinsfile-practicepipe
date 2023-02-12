@@ -15,11 +15,17 @@ agent any
               }
            }
            
-      stage("Inregration testing"){
+     stage("Inregration testing"){
         steps{
               sh 'mvn verify -DskipUnitTests'
             }
           }     
+          
+       stage("Maven Build"){
+        steps{
+              sh 'mvn clean install'
+            }
+          }   
 
         }
     }
