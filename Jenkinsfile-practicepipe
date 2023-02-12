@@ -3,7 +3,9 @@ pipeline{
   stages{
 
     stage("Git Checkout"){
-            git credentialsId: 'GitID', url: 'https://github.com/shreemansandeep/Train-Ticket-Reservation-System.git'
+      steps{            
+              git credentialsId: 'GitID', url: 'https://github.com/shreemansandeep/Train-Ticket-Reservation-System.git'
+              }
            }
 
         }
