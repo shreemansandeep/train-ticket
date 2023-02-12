@@ -14,6 +14,12 @@ agent any
               sh 'mvn test'
               }
            }
+           
+      stage("Inregration testing"){
+        steps{
+              sh 'mvn verify -DskipUnitTests'
+            }
+          }     
 
         }
     }
