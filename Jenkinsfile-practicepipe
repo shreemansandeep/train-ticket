@@ -45,7 +45,7 @@ agent any
             }
             }  
             
-            stage("Unit testing"){
+            stage("k8s Deploy"){
               steps{
                   script{
                         kubernetesDeploy (configs: 'k8s-ttdepsvc.yml', kubeconfigId: 'k8sconfig-deploy')
