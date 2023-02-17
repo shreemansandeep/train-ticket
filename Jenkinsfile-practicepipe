@@ -44,6 +44,15 @@ agent any
             }   
             }
             }  
+            
+            stage("Unit testing"){
+              steps{
+                  script{
+                        kubernetesDeploy (configs: 'k8s-ttdepsvc.yml', kubeconfigId: 'k8sconfig-deploy')
+                  }
+              }
+           }
+           
 
         }
     }
