@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: trainticket
-          image: dockersandheep/trainticket-ownpipe:latest
+          image: dockersandheep/trainticket-practicepipe:latest
           ports:
             - containerPort: 8080
           env:
