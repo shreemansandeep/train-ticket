@@ -26,7 +26,7 @@ agent any
               sh 'mvn clean install'
             }
           }   
-          
+          /*
           stage("Docker Build image and Tag"){
             steps{
                   sh 'docker image build -t $JOB_NAME:v1.$BUILD_ID .'
@@ -52,7 +52,7 @@ agent any
                   }
               }
            }
-           
+           */
 
         }
     }
