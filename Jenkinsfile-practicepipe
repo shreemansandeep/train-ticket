@@ -1,5 +1,12 @@
 pipeline{
 agent any
+environment {
+        AWS_ACCOUNT_ID="436312201622"
+        AWS_DEFAULT_REGION="ap-south-1"
+        IMAGE_REPO_NAME="trainticket-ecr"
+        IMAGE_TAG="v1"
+        REPOSITORY_URI = "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_NAME}"
+    }
 
   stages{
 
@@ -30,14 +37,22 @@ agent any
           stage("Docker Build image and Tag"){
             steps{
                   sh 'docker image build -t $JOB_NAME:v1.$BUILD_ID .'
-                  sh 'docker image tag $JOB_NAME:v1.$BUILD_ID dockersandheep/$JOB_NAME:v1.$BUILD_ID'
-                  sh 'docker image tag $JOB_NAME:v1.$BUILD_ID dockersandheep/$JOB_NAME:latest'
+                 // sh 'docker image tag $JOB_NAME:v1.$BUILD_ID dockersandheep/$JOB_NAME:v1.$BUILD_ID'
+                 // sh 'docker image tag $JOB_NAME:v1.$BUILD_ID dockersandheep/$JOB_NAME:latest'
             }
             }
             
-            
-            
-            stage("Push to ECR") {
+            stage("Pushing to ECR") {
+              steps{  
+                script {
+                  sh "docker tag ${IMAGE_REPO_NAME}:${IMAGE_TAG} ${REPOSITORY_URI}:$IMAGE_TAG"
+                  sh "docker push ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_NAME}:${IMAGE_TAG}"
+         }
+        }
+      }
+      
+            /*
+            stage("Pushing to ECR") {
             steps {
                 script{
                     withDockerRegistry(credentialsId: 'ecr:ap-south-1:AwsCred', url: '436312201622.dkr.ecr.ap-south-1.amazonaws.com/trainticket-ecr') {
@@ -48,7 +63,7 @@ agent any
             }
         }
         
-            /*
+            
      stage("Push image to Docker Hub"){
             steps{
                   withCredentials([string(credentialsId: 'DockerHpwd', variable: 'DockerHubPwd')]) {
