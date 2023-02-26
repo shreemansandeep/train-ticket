@@ -49,6 +49,14 @@ stage('Pushing to ECR') {
             }
           }
         }
+        
+ stage('Deploying on EKS Cluster') {
+  steps{
+            withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'K8skubeconfig', namespace: '', restrictKubeConfigAccess: false, serverUrl: '') {
+            sh "kubectl apply -f k8s-ttdepsvc.yml"
+            }
+         }
+      }
 
 }
 }
