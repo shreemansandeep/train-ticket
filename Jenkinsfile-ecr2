@@ -21,7 +21,8 @@ sh "aws ecr get-login-password --region ${AWS_DEFAULT_REGION} | docker login --u
 
 stage('Cloning Git') {
 steps {
-git credentialsId: 'GitHubCreD', url: 'https://github.com/shreemansandeep/Train-Ticket-Reservation-System.git'images
+git credentialsId: 'GitHubCreD', url: 'https://github.com/shreemansandeep/Train-Ticket-Reservation-System.git'
+}
 }
 
 stage('Building image') {
@@ -41,5 +42,6 @@ sh "docker push ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${
 }
 }
 }
+
 }
 }
