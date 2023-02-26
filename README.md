@@ -1,3 +1,15 @@
+## Automate Docker builds using Jenkins Pipelines | Dockerize Python App | Upload Images into AWS ECR
+-Pre-requistes:
+1. Jenkins is up and running
+2. Docker installed on Jenkins instance. Click here to for integrating Docker and Jenkins
+3. Docker and Docker pipelines plug-in are installed
+4. Repo created in ECR, Click here to know how to do that.
+5. Make sure port 8096 is opened up in firewall rules. 
+6. Create an IAM role with AmazonEC2ContainerRegistryFullAccess policy, attach to Jenkins EC2 instance
+7. Make sure AWS cli is installed in Jenkins instance.
+
+Refer this website: https://www.cidevops.com/2020/07/automate-docker-builds-using-jenkins.html
+
 # TrainBooking Website
 - Youtube video for local setup of similar project: https://www.youtube.com/watch?v=mLFPodZO8Iw&t=8s
 - Live Url: https://traintickets.herokuapp.com <br>
