@@ -8,6 +8,7 @@
 6. Create an IAM role with AmazonEC2ContainerRegistryFullAccess policy, attach to Jenkins EC2 instance
 7. Make sure AWS cli is installed in Jenkins instance.
 
+Refer this website (Git->Maven->Docker->ECR->EKS): https://www.coachdevops.com/2022/01/deploy-springboot-microservices-app_11.html
 Refer this website: https://www.cidevops.com/2020/07/automate-docker-builds-using-jenkins.html
 
 # TrainBooking Website
