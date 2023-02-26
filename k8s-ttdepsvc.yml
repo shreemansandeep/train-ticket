@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: trainticket
-          image: dockersandheep/trainticket-practicepipe:latest
+          image: 436312201622.dkr.ecr.ap-south-1.amazonaws.com/trainticket-ecr:latest
           ports:
             - containerPort: 8080
           env:
