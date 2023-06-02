@@ -21,7 +21,7 @@ pipeline{
       
       stage("Docker Build image and Tag"){
             steps{
-                  sh 'docker image build . -t $JOB_NAME:$(DOCKER_TAG)'
+                  sh 'docker image build -t $JOB_NAME:$(DOCKER_TAG) .'
                   sh 'docker image tag $JOB_NAME:$(DOCKER_TAG) dockersandheep/$JOB_NAME:$(DOCKER_TAG)'
                   // sh 'docker image tag $JOB_NAME:$(DOCKER_TAG) dockersandheep/$JOB_NAME:latest'
               }
@@ -31,6 +31,6 @@ pipeline{
  }
  
  def getVersion(){
- def commitHash = sh returnStdout: true, script: 'git rev-parse --short HEAD'
+ def commitHash = sh returnStdout: true, script: 'BUILD_ID'
  return commitHash
  }
