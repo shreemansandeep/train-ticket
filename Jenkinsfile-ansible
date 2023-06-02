@@ -2,7 +2,7 @@ pipeline{
   agent any
   
   environment {
-      DOCKER_TAG = "getVersion()"
+      DOCKER_TAG = getVersion()
     }
 
     stages{
@@ -16,7 +16,6 @@ pipeline{
       stage("Maven Build"){
       steps{
           sh "mvn clean install"
-  
         }
       }
       
