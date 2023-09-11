@@ -56,6 +56,25 @@ pipeline{
             }
         }
 
+        stage ('Build and push to docker hub'){
+            steps{
+                script{
+                    withDockerRegistry(credentialsId: 'Dockrhub-Cred', toolName: 'Docker') {
+                        sh "docker build -t $JOB_NAME:v1.$BUILD_ID ."
+                        sh "docker tag $JOB_NAME:v1.$BUILD_ID dockersandheep/$JOB_NAME:v1.$BUILD_ID"
+                        sh "docker push dockersandheep/$JOB_NAME:v1.$BUILD_ID"
+                   }
+                }
+            }
+        }
+
+        stage("TRIVY"){
+            steps{
+                sh "trivy image dockersandheep/$JOB_NAME:v1.$BUILD_ID > trivy.txt"
+            }
+        }
+
+
 
    }
 }
