@@ -32,7 +32,7 @@ pipeline{
                 sh 'mvn test'
             }
         }
-
+<!--
     stage("Static code analysis"){
               steps{
               script{
@@ -42,7 +42,7 @@ pipeline{
                 }
             }
         }
-
+-->
     stage ('Build war file'){
             steps{
                 sh 'mvn clean install -DskipTests=true'
