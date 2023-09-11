@@ -86,6 +86,17 @@ pipeline{
             }
             }
 
+        stage('K8s Deploy'){
+            steps{
+                script{
+                    withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'k8s', namespace: '', restrictKubeConfigAccess: false, serverUrl: '') {
+                        sh 'kubectl apply -f k8s-ttdepsvc.yml'
+                    }
+                }
+            }
+        }
+
+
    }
 // post block after stages
 post {
