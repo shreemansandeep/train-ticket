@@ -169,6 +169,3 @@ Step 8: Default Username And Password For User Is "shashi" And "shashi"
 <img src="https://github.com/shashirajraja/Train-Ticket-Reservation-System/blob/master/Screenshots/TicketBook.png" width="100%">
 
 
-#### "Suggestions and project Improvement are Invited"
-#### Shashi Raj
-##### Project Leader
