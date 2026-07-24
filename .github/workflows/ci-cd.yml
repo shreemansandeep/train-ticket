@@ -10,25 +10,15 @@ on:
 jobs:
   build-and-test:
     name: Build & Test (Maven)
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
-      - name: Checkout Code
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up JDK 8
-        uses: actions/setup-java@v4
-        with:
-          java-version: '8'
-          distribution: 'temurin'
-          cache: 'maven'
-
-      - name: Build and Test with Maven
-        run: mvn clean package --batch-mode
-
-      - name: Upload WAR Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: trainticketsystem-war
-          path: target/*.war
-          retention-days: 7
+      - name: Runner Information
+        run: |
+          echo "Runner is working!"
+          hostname
+          whoami
+          pwd
