@@ -9,7 +9,7 @@ on:
 
 jobs:
   build-and-test:
-    name: Build & Test (Maven)
+    name: Test on Self Runner
     runs-on: self-hosted
 
     steps:
