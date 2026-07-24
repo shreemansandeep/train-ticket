@@ -34,3 +34,6 @@ jobs:
 
       - name: Maven Test
         run: mvn test
+
+      - name: Maven Build
+        run: mvn clean package
