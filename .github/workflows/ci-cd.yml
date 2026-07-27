@@ -116,3 +116,9 @@ jobs:
         run: |
           docker push ${{ secrets.DOCKER_USERNAME }}/trainticketsystem:${{ github.sha }}
 
+      - name: Clean up Docker Image from Runner
+        if: always()
+        run: |
+          docker rmi ${{ secrets.DOCKER_USERNAME }}/trainticketsystem:${{ github.sha }} || true
+
+
