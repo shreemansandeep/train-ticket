@@ -87,6 +87,13 @@ jobs:
     steps:
       - name: Checkout Source Code
         uses: actions/checkout@v4
+        with:
+          clean: false
+
+      - name: Clean stale root-owned build artifacts
+        run: |
+          docker run --rm -v ${{ github.workspace }}:/app alpine rm -rf /app/target /app/.scannerwork || true
+
 
       # Step 1: Maven Compile (using Maven container)
       - name: Maven Compile
