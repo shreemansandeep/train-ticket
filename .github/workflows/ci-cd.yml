@@ -178,13 +178,12 @@ jobs:
           docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/trainticketsystem:${{ env.SHORT_SHA }}
 
       # Cleanup Local Images
-      # - name: Remove Local Docker Images
-      #   if: always()
-      #   run: |
-      #     docker rmi trainticketsystem:${{ env.SHORT_SHA }} || true
+      - name: Remove Local Docker Images
+        if: always()
+        run: |
+          docker rmi trainticketsystem:${{ env.SHORT_SHA }} || true
 
-      #     docker rmi \
-      #       ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/trainticketsystem:${{ env.SHORT_SHA }} || true            
+          docker rmi ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/trainticketsystem:${{ env.SHORT_SHA }} || true            
 
       - name: Clean up workspace permissions & build artifacts
         if: always()
