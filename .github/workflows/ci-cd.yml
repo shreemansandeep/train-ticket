@@ -124,6 +124,10 @@ jobs:
 
 
 
+      - name: Set Short Commit SHA
+        run: |
+          echo "SHORT_SHA=${GITHUB_SHA:0:7}" >> $GITHUB_ENV
+
       # Step 5 & 6: Docker Login, Build & Push
       - name: Log in to Docker Hub
         run: |
@@ -131,16 +135,18 @@ jobs:
 
       - name: Docker Build Image
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/trainticketsystem:${{ github.sha }} .
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/trainticketsystem:${{ env.SHORT_SHA }} .
 
       - name: Docker Push Image
         run: |
-          docker push ${{ secrets.DOCKER_USERNAME }}/trainticketsystem:${{ github.sha }}
+          docker push ${{ secrets.DOCKER_USERNAME }}/trainticketsystem:${{ env.SHORT_SHA }}
 
       - name: Clean up Docker Image from Runner
         if: always()
         run: |
-          docker rmi ${{ secrets.DOCKER_USERNAME }}/trainticketsystem:${{ github.sha }} || true
+          docker rmi ${{ secrets.DOCKER_USERNAME }}/trainticketsystem:${{ env.SHORT_SHA }} || true
+
+
 
       - name: Clean up workspace permissions & build artifacts
         if: always()
