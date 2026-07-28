@@ -108,7 +108,7 @@ jobs:
         run: |
           docker run --rm \
             -v ${{ github.workspace }}:/usr/src \
-            sonarsource/sonar-scanner-cli \
+            sonarsource/sonar-scanner-cli:latest \
             -Dsonar.projectKey=trainticketsystem \
             -Dsonar.sources=. \
             -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }} \
