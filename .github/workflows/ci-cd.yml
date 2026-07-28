@@ -166,6 +166,17 @@ jobs:
         run: |
           docker build -t trainticketsystem:${{ env.SHORT_SHA }} .
 
+      # Trivy Image Scan
+      - name: Trivy Image Scan
+        run: |
+          docker run --rm \
+            -v /var/run/docker.sock:/var/run/docker.sock \
+            -v $HOME/.cache/trivy:/root/.cache/ \
+            aquasec/trivy:latest image \
+            --severity HIGH,CRITICAL \
+            --exit-code 1 \
+            trainticketsystem:${{ env.SHORT_SHA }}          
+
       # Tag Docker Image
       - name: Tag Docker Image
         run: |
