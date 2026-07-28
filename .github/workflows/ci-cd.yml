@@ -114,15 +114,14 @@ jobs:
       - name: SonarQube Scan
         run: |
           docker run --rm \
-            -v ${{ github.workspace }}:/usr/src \
-            -e SONAR_HOST_URL="${{ secrets.SONAR_HOST_URL }}" \
-            -e SONAR_TOKEN="${{ secrets.SONAR_TOKEN }}" \
-            sonarsource/sonar-scanner-cli:latest \
-            -Dsonar.projectKey=trainticketsystem \
-            -Dsonar.sources=. \
-            -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }} \
-            -Dsonar.token=${{ secrets.SONAR_TOKEN }} \
-            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+            -v ${{ github.workspace }}:/app -w /app \
+            maven:3.9.11-eclipse-temurin-17 \
+            mvn sonar:sonar \
+              -Dsonar.projectKey=trainticketsystem \
+              -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }} \
+              -Dsonar.token=${{ secrets.SONAR_TOKEN }} \
+              -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+
 
       # Step 5 & 6: Docker Login, Build & Push
       - name: Log in to Docker Hub
