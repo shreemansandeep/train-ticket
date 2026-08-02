@@ -1,0 +1,3 @@
+# Enforce text auto-handling and force LF for Jenkinsfiles
+* text=auto
+Jenkinsfile* text eol=lf

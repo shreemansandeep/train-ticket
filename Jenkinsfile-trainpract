@@ -37,10 +37,9 @@ pipeline {
             ).trim()
 
             sh """
-                sonar-scanner \
                 mvn clean verify sonar:sonar \
-                  -Dsonar.projectKey=training-app \
-                  -Dsonar.host.url=http://<SONAR_SERVER_IP>:9000 \
+                  -Dsonar.projectKey=Train-Ticket-System \
+                  -Dsonar.host.url=http://43.205.235.159:9000 \
                   -Dsonar.token=${sonarToken}
             """
         }
