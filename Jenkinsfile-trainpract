@@ -49,28 +49,16 @@ pipeline {
         }
         */
 
-        // Maven Build Agents using Docker Containers
+        // Maven Build Agents using Docker Containers (via Docker CLI)
         stage('Unit Testing in Container') {
-            agent {
-                docker {
-                    image 'maven:3.8.6-openjdk-11'
-                    args '-v $HOME/.m2:/root/.m2'
-                }
-            }
             steps {
-                sh 'mvn test'
+                sh 'docker run --rm -v $HOME/.m2:/root/.m2 -v ${WORKSPACE}:/app -w /app maven:3.8.6-openjdk-11 mvn test'
             }
         }
 
         stage('Maven Build in Container') {
-            agent {
-                docker {
-                    image 'maven:3.8.6-openjdk-11'
-                    args '-v $HOME/.m2:/root/.m2'
-                }
-            }
             steps {
-                sh 'mvn clean package'
+                sh 'docker run --rm -v $HOME/.m2:/root/.m2 -v ${WORKSPACE}:/app -w /app maven:3.8.6-openjdk-11 mvn clean package'
             }
         }
     }
