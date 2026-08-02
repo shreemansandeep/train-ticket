@@ -40,6 +40,7 @@ pipeline {
                 mvn clean verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
                   -Dsonar.projectKey=Train-Ticket-System \
                   -Dsonar.host.url=http://43.205.235.159:9000 \
+                  -Dsonar.login=${sonarToken} \
                   -Dsonar.token=${sonarToken}
             """
         }
